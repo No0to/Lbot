@@ -93,7 +93,7 @@ async def echo(numbers):
 
 @client.command(pass_context=True)
 async def ping(ctx):
-    await client.say("Pong!")
+    await client.say("Pong! ")
 
 @client.command(pass_context=True)
 async def about(ctx):
