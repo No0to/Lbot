@@ -7,20 +7,14 @@ from discord import Game
 
 init(convert=True)
 
-print(Fore.GREEN + 'Lbot v1.4')
+print(Fore.GREEN + 'botbot v1.0')
 print(Style.RESET_ALL)
 
-# Define a filename.
 filename = "token.txt"
 
-# Open the file as f.
-# The function readlines() reads the file.
 with open(filename) as f:
     content = f.readlines()
 
-# Show the file contents line by line.
-# We added the comma to print single newlines and not double newlines.
-# This is because the lines contain the newline character '\n'.
 for line in content:
 
     TOKEN = line
@@ -108,7 +102,7 @@ async def about(ctx):
 
 @client.event
 async def on_ready():
-    await client.change_presence(game=Game(name="With Code."))
+    await client.change_status(game=discord.Game(name="Fun Game", url="twitch.tv/streamer", type=1))
     print("Logged in as " + client.user.name)
 
 
