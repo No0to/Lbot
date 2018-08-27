@@ -1,2 +1,2 @@
-# Lbot
-Discord Bot
+# davenPort
+A Discord bot named after a cat
