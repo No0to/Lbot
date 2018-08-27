@@ -2,6 +2,7 @@
 
 ### Text ###
 *.txt
+*.bat
 
 
 # End of https://www.gitignore.io/api/text
