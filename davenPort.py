@@ -119,13 +119,13 @@ async def info(ctx):
     print("$$info")
 
 @client.command()
-async def square(number):
+async def square(ctx, number):
     squared_value = int(number) * int(number)
     await ctx.send(str(number + " squared is " + str(squared_value)))
     print("$$square")
 
 @client.command()
-async def cube(number):
+async def cube(ctx, number):
     cubed_value = int(number) * int(number)
     await ctx.send(str(number + " cubed is " + str(cubed_value)))
     print("$$cube")
@@ -135,7 +135,7 @@ async def deadass(ctx):
     await ctx.send('god.png')
 
 @client.command()
-async def bitcoin():
+async def bitcoin(ctx):
     discord_webhook_url = 'https://discordapp.com/api/webhooks/<webhookid>/<tokenid>'
     bitcoin_price_url = 'https://api.coindesk.com/v1/bpi/currentprice/BTC.json'
     data = requests.get(bitcoin_price_url).json()
@@ -143,30 +143,29 @@ async def bitcoin():
     await ctx.send("The bitcoin price is $" + price_in_usd)
     print("$$bitcoin")
 
-
 @client.command()
-async def double(number, ctx):
-    doubled = str(number) * 2
+async def double(ctx, number):
+    doubled = int(number) * 2
     await ctx.send(str(number + " doubled is " + str(doubled)))
     print("$$double")
 
 @client.command()
-async def triple(number):
+async def triple(ctx, number):
     tripled = int(number) * 3
     await ctx.send(str(number + " tripled is " + str(tripled)))
     print("$$triple")
 
 @client.command()
-async def echo(*, words):
+async def echo(ctx, *, words):
     await ctx.send(words)
     print("$$echo")
 
 @client.command()
-async def getgay(ctx):
+async def getgay(ctx): #ctx.message.author
     test = ctx.message.author.mention
     testt = discord.Member
-    await ctx.send( str(test) + " Has just came out as gay!")
-    await Member.edit()(ctx.message.author, ctx.message.author.display_name + '‍🌈')
+    await ctx.send(str(test) + " Has just came out as gay!")
+    await Member.edit(nick(ctx.message.author, ctx.message.author.display_name + '‍🌈'))
     print("$$getgay")
 
 @client.command()
