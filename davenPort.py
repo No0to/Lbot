@@ -165,7 +165,7 @@ async def getgay(ctx): #ctx.message.author
     test = ctx.message.author.mention
     testt = discord.Member
     await ctx.send(str(test) + " Has just came out as gay!")
-    await Member.edit(nick(ctx.message.author, ctx.message.author.display_name + '‍🌈'))
+    await Member.edit(change_nickname(ctx.message.author, ctx.message.author.display_name + '‍🌈'))
     print("$$getgay")
 
 @client.command()
