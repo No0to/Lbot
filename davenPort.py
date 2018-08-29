@@ -27,6 +27,37 @@ client = Bot(command_prefix=BOT_PREFIX)
 
 client.remove_command('help')
 
+@client.command()
+async def help(ctx):
+    embed=discord.Embed()
+    embed.set_thumbnail(url="https://i.imgur.com/piq0KOO.png")
+    embed.add_field(name="$$help", value="The command you're using currently.", inline=False)
+    embed.add_field(name="$$info", value="Info about the bot", inline=True)
+    embed.add_field(name="$$8ball", value="Answers questions using an 8ball", inline=False)
+    embed.add_field(name="$$oot", value="oot", inline=False)
+    embed.add_field(name="$$joy", value="Spams :joy: 5 times", inline=False)
+    embed.add_field(name="$$double", value="Doubles a number", inline=True)
+    embed.add_field(name="$$triple", value="Triples a number", inline=False)
+    embed.add_field(name="$$square", value="Squares a number", inline=True)
+    embed.add_field(name="$$cube", value="Cubes a number", inline=False)
+    embed.add_field(name="$$bitcoin", value="Shows the current price of bitcoin", inline=True)
+    embed.add_field(name="$$echo", value="Repeats whatever you say after the $$echo", inline=False)
+    embed.add_field(name="$$ping", value="Just sees how quick it is at the moment", inline=True)
+    embed.add_field(name="$$getgay", value="You'll see", inline=False)
+    embed.set_footer(text="Note: $$getgay doesn't work with the owner of the guild. $$whydoesntitwork for more info.")
+    await ctx.send(embed=embed)
+    print("$$help")
+
+@client.command()
+async def info(ctx):
+    embed=discord.Embed(title="davenPort Info", color=0xaaf9ff)
+    embed.set_thumbnail(url="https://i.imgur.com/piq0KOO.png")
+    embed.add_field(name="Made By Thou", value="thog #6636, @Th0u__", inline=True)
+    embed.add_field(name="Invite", value="[Invite me to your guild!](https://discordapp.com/oauth2/authorize?&client_id=449815952293625857&scope=bot&permissions=8)", inline=True)
+    embed.add_field(name="guild Count", value=len(client.guilds), inline=True)
+    await ctx.send(embed=embed)
+    print("$$info")
+
 @client.command(name='8ball')
 async def eightball(ctx):
     possible_responses = [
@@ -88,52 +119,40 @@ async def oot(ctx):
     ]
     await ctx.send(random.choice(possible_responses) + "oot")
     print("$$oot")
-
+    
 @client.command()
-async def help(ctx):
-    embed=discord.Embed()
-    embed.set_thumbnail(url="https://i.imgur.com/piq0KOO.png")
-    embed.add_field(name="$$info", value="Info about the bot", inline=True)
-    embed.add_field(name="$$8ball", value="Answers questions using an 8ball", inline=False)
-    embed.add_field(name="$$oot", value="oot", inline=False)
-    embed.add_field(name="$$double", value="Doubles a number", inline=True)
-    embed.add_field(name="$$triple", value="Triples a number", inline=False)
-    embed.add_field(name="$$square", value="Squares a number", inline=True)
-    embed.add_field(name="$$cube", value="Cubes a number", inline=False)
-    embed.add_field(name="$$bitcoin", value="Shows the current price of bitcoin", inline=True)
-    embed.add_field(name="$$echo", value="Repeats whatever you say after the $$echo", inline=False)
-    embed.add_field(name="$$ping", value="Just sees how quick it is at the moment", inline=True)
-    embed.add_field(name="$$getgay", value="You'll see", inline=False)
-    embed.set_footer(text="Note: $$getgay doesn't work with the owner of the guild. $$whydoesntitwork for more info.")
-    await ctx.send(embed=embed)
-    print("$$help")
-
+async def joy(ctx):
+    await ctx.send(":joy:")
+    await ctx.send(":joy:")
+    await ctx.send(":joy:")
+    await ctx.send(":joy:")
+    await ctx.send(":joy:")
+    print("$$joy")
+    
 @client.command()
-async def info(ctx):
-    embed=discord.Embed(title="davenPort Info", color=0xaaf9ff)
-    embed.set_thumbnail(url="https://i.imgur.com/piq0KOO.png")
-    embed.add_field(name="Made By Thou", value="thog #6636, @Th0u__", inline=True)
-    embed.add_field(name="Invite", value="[Invite me to your guild!](https://discordapp.com/oauth2/authorize?&client_id=449815952293625857&scope=bot&permissions=8)", inline=True)
-    embed.add_field(name="guild Count", value=len(client.guilds), inline=True)
-    await ctx.send(embed=embed)
-    print("$$info")
-
+async def double(ctx, number):
+    doubled = int(number) * 2
+    await ctx.send(str(number + " doubled is " + str(doubled)))
+    print("$$double")
+    
+@client.command()
+async def triple(ctx, number):
+    tripled = int(number) * 3
+    await ctx.send(str(number + " tripled is " + str(tripled)))
+    print("$$triple")
+    
 @client.command()
 async def square(ctx, number):
     squared_value = int(number) * int(number)
     await ctx.send(str(number + " squared is " + str(squared_value)))
     print("$$square")
-
+    
 @client.command()
 async def cube(ctx, number):
     cubed_value = int(number) * int(number)
     await ctx.send(str(number + " cubed is " + str(cubed_value)))
     print("$$cube")
-
-@client.command()
-async def deadass(ctx):
-    await ctx.send('god.png')
-
+    
 @client.command()
 async def bitcoin(ctx):
     discord_webhook_url = 'https://discordapp.com/api/webhooks/<webhookid>/<tokenid>'
@@ -142,36 +161,28 @@ async def bitcoin(ctx):
     price_in_usd = data['bpi']['USD']['rate']
     await ctx.send("The bitcoin price is $" + price_in_usd)
     print("$$bitcoin")
-
-@client.command()
-async def double(ctx, number):
-    doubled = int(number) * 2
-    await ctx.send(str(number + " doubled is " + str(doubled)))
-    print("$$double")
-
-@client.command()
-async def triple(ctx, number):
-    tripled = int(number) * 3
-    await ctx.send(str(number + " tripled is " + str(tripled)))
-    print("$$triple")
-
+    
 @client.command()
 async def echo(ctx, *, words):
     await ctx.send(words)
     print("$$echo")
-
+    
+@client.command()
+async def ping(ctx):
+    await ctx.send("Pong!")
+    print("$$ping")
+    
 @client.command()
 async def getgay(ctx): #ctx.message.author
     test = ctx.message.author.mention
     testt = discord.Member
     await ctx.send(str(test) + " Has just came out as gay!")
-    await Member.edit(change_nickname(ctx.message.author, ctx.message.author.display_name + '‍🌈'))
+    await ctx.author.edit(nick=f'{ctx.author.display_name} 🌈')
     print("$$getgay")
 
 @client.command()
-async def ping(ctx):
-    await ctx.send("Pong!")
-    print("$$ping")
+async def deadass(ctx):
+    await ctx.send('god.png')
 
 @client.command()
 async def whydoesntitwork(ctx):
