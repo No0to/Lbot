@@ -84,12 +84,47 @@ async def eightball(ctx):
     "My sources say no",
     "Outlook not so good",
     "Very doubtful",
-    "Chances aren't good"
-
+    "Chances aren't good",
+    "Possibly.",
+    "I suppose it's decided.",
+    "For sure.",
+    "Yeah, definitely.",
+    "Lol I guess.",
+    "You can count on it..",
+    "My spidey senses are telling me yes. (Mr Stark I don't fe-)",
+    "Eh maybe.",
+    "Microsoft says Outlook is good.",
+    "yes",
+    "Signs point to Yesville. Oh, it's a warzone.",
+    "Signs point to Nopeville. Hell to the no.",
+    "Signs poi... Oh. ***Oh no.***",
+    "As if.",
+    "Absolutely.",
+    "What type of question is that? How- Nvm just try again later",
+    "Come again?",
+    "I know this one. Buuut I guess I'll just be an ass and not tell you now.",
+    "Wait what?",
+    "OK HOLD ON WHAT",
+    "Don't even try.",
+    "**No.**",
+    "Never.",
+    "Google says Outlook is a big NOPE.",
+    "Jesus Christ dude, that's never going to happen and you know it.",
+    "Your chances are as good as trying to convince me to do ten pushups. DON'T. YOU. DARE.",
+    "You're- you're kidding. Of course not.",
+    "God forbid.",
+    "Hell no.",
+    "Why?",
+    "Heh, heh. ***funny jok-***",
+    "Nahh",
+    "...Don't *ever* ask this question anymore",
+    "Hey, VSauce Michael here. It could, but maybe it won't.",
+    "Hey, VSauce Michael here. When is, when you aren't?"
+    
     ]
-    await ctx.send(random.choice(possible_responses) + ", " + ctx.message.author.mention)
+    await ctx.send( ctx.message.author.mention + " " + random.choice(possible_responses))
     print("$$8ball")
-
+    
 @client.command()
 async def oot(ctx):
     possible_responses = [
@@ -182,7 +217,8 @@ async def getgay(ctx): #ctx.message.author
 
 @client.command()
 async def deadass(ctx):
-    await ctx.send('god.png')
+    file = discord.File("god.png", filename="god.png")
+    await ctx.send(file=file)
 
 @client.command()
 async def whydoesntitwork(ctx):
