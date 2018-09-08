@@ -4,6 +4,7 @@ from colorama import *
 from datetime import timedelta
 from discord.ext.commands import Bot
 from discord.utils import get
+from random import *
 import discord
 from discord import *
 
@@ -35,6 +36,7 @@ async def help(ctx):
     embed.add_field(name="$$info", value="Info about the bot", inline=True)
     embed.add_field(name="$$8ball", value="Answers questions using an 8ball", inline=False)
     embed.add_field(name="$$oot", value="oot", inline=False)
+    embed.add_field(name="$$xkcd", value="Uploads a random xkcd comic", inline=False)
     embed.add_field(name="$$joy", value="Spams :joy: 5 times", inline=False)
     embed.add_field(name="$$double", value="Doubles a number", inline=True)
     embed.add_field(name="$$triple", value="Triples a number", inline=False)
@@ -154,6 +156,12 @@ async def oot(ctx):
     ]
     await ctx.send(random.choice(possible_responses) + "oot")
     print("$$oot")
+    
+@client.command()
+async def xkcd(ctx):
+    possible_responses = randint(1, 2042)
+    file = discord.File(f"./comics/{possible_responses}.png")
+    await ctx.send(file=file)
     
 @client.command()
 async def joy(ctx):
